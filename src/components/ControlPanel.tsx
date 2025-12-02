@@ -7,9 +7,9 @@ interface ControlPanelProps {
 
 export const ControlPanel = ({ state, onToggleMode }: ControlPanelProps) => {
   return (
-    <div className="absolute inset-0 pointer-events-none flex justify-between p-6 text-[#00FF00] font-mono tracking-wider z-10">
+    <div className="absolute inset-0 pointer-events-none flex flex-col gap-4 md:flex-row md:justify-between md:items-start p-4 sm:p-5 md:p-6 text-[#00FF00] font-mono tracking-wider z-10">
       {/* Left Panel */}
-      <div className="flex flex-col gap-4 bg-black/50 p-4 border border-[#00FF00]/30 rounded backdrop-blur-sm pointer-events-auto w-64">
+      <div className="flex flex-col gap-4 bg-black/50 p-4 border border-[#00FF00]/30 rounded backdrop-blur-sm pointer-events-auto w-full max-w-md md:max-w-none md:w-64">
         <div>
           <h1 className="text-xl font-bold text-gold mb-1 text-[#FFD700]">XMAS ARCHITECT</h1>
           <div className="h-px w-full bg-[#00FF00]/50 mb-2"></div>
@@ -56,7 +56,7 @@ export const ControlPanel = ({ state, onToggleMode }: ControlPanelProps) => {
       </div>
 
       {/* Right Panel */}
-      <div className="flex flex-col gap-4 bg-black/50 p-4 border border-[#00FF00]/30 rounded backdrop-blur-sm pointer-events-auto w-64 text-right">
+      <div className="flex flex-col gap-4 bg-black/50 p-4 border border-[#00FF00]/30 rounded backdrop-blur-sm pointer-events-auto w-full max-w-md md:max-w-none md:w-64 text-left md:text-right md:self-start">
         <div className="text-sm mb-2">CONTROLS</div>
         
         <div className="space-y-4">
@@ -102,7 +102,7 @@ export const ControlPanel = ({ state, onToggleMode }: ControlPanelProps) => {
 
         <button 
           onClick={onToggleMode}
-          className="mt-4 border border-[#00FF00] text-[#00FF00] hover:bg-[#00FF00] hover:text-black transition-colors py-2 px-4 text-xs tracking-widest uppercase"
+          className="mt-4 border border-[#00FF00] text-[#00FF00] hover:bg-[#00FF00] hover:text-black transition-colors py-2 px-4 text-xs tracking-widest uppercase w-full md:w-auto text-center"
         >
           &gt;&gt; NEXT FORM ⚡
         </button>
