@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { AppMode } from '../types';
@@ -9,6 +9,13 @@ export const TreeTopper = ({ mode }: { mode: AppMode }) => {
   const ring2Ref = useRef<THREE.Mesh>(null);
   const coreRef = useRef<THREE.Mesh>(null);
   const sparklesRef = useRef<THREE.Points>(null);
+  const sparklePositions = useMemo(() => {
+    const arr = new Float32Array(80 * 3);
+    for (let i = 0; i < 80 * 3; i++) {
+      arr[i] = (Math.random() - 0.5) * 4;
+    }
+    return arr;
+  }, []);
 
   useFrame((state) => {
     if (!groupRef.current) return;
@@ -65,9 +72,7 @@ export const TreeTopper = ({ mode }: { mode: AppMode }) => {
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            count={80}
-            array={new Float32Array(80 * 3).map(() => (Math.random() - 0.5) * 4)}
-            itemSize={3}
+            args={[sparklePositions, 3]}
           />
         </bufferGeometry>
         <pointsMaterial size={0.1} color="#FFF" transparent opacity={0.8} />
